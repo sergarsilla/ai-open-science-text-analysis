@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "Si te resulta útil, por favor cita este repositorio."
+title: "ai-open-science-assessment1"
+version: "1.0.0"
+date-released: 2025-03-01
+doi: "10.5281/zenodo.xxxxx"  # Si conectas tu repo con Zenodo, remplaza con tu DOI
+authors:
+  - family-names: "García"
+    given-names: "Sergio"
+    affiliation: "Universidad Politécnica de Madrid"
+    orcid: "https://orcid.org/0000-0000-0000-0000"
+license: "Apache-2.0"
