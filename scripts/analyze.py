@@ -6,14 +6,16 @@ import matplotlib.pyplot as plt
 import re
 
 GROBID_ENDPOINT = "http://localhost:8070/api/processFulltextDocument"
+GROBID_URL = os.environ.get("GROBID_URL", "http://localhost:8070")
 PAPERS_FOLDER = "papers"
 OUTPUT_FOLDER = "output"
 
 def process_pdf(file_path):
     """Envía un PDF a Grobid y devuelve el contenido TEI en formato string."""
+    url = f"{GROBID_URL}/api/processFulltextDocument"
     with open(file_path, 'rb') as f:
         response = requests.post(
-            GROBID_ENDPOINT,
+            url,
             files={'input': (os.path.basename(file_path), f)},
             data={'consolidateCitations': '0'}  # Cambia a '1' si quieres consolidar citas
         )
