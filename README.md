@@ -25,7 +25,9 @@ git clone https://github.com/sergarsilla/ai-open-science-text-analysis.git
 cd ai-open-science-text-analysis
 ```
 
-### 2. Ejecutar la aplicación con Docker Compose (recomendado)
+### 2. Colocar los artículos PDF que deseas analizar en el directorio `papers/`
+
+### 3. Ejecutar la aplicación con Docker Compose (recomendado)
 
 Este método permite ejecutar todo el sistema en un solo paso, sin necesidad de instalar dependencias manualmente.
 
@@ -55,7 +57,7 @@ Este método permite ejecutar todo el sistema en un solo paso, sin necesidad de 
    docker compose down
    ```
 
-### 3. Alternativa: Ejecutar manualmente sin Docker Compose
+### 4. Alternativa: Ejecutar manualmente sin Docker Compose
 
 Si prefieres no usar Docker Compose, puedes ejecutar Grobid y el análisis manualmente.
 
