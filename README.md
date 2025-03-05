@@ -1,5 +1,136 @@
 # AI Open Science Text Analysis
 
+This project analyzes open-access PDF articles using [Grobid](https://github.com/kermitt2/grobid) to extract information and generate:
+- A **keyword cloud** based on the abstracts of these PDFs.
+- A **visualization** (bar chart) showing the **number of figures** per article.
+- A **list of links (URLs)** found in each article.
+
+## Requirements
+
+- **Python 3.9+** or later.
+- [**Docker**](https://docs.docker.com/) to easily run Grobid.  
+  *(Alternatively, if you have Grobid installed differently, adjust the configuration accordingly.)*
+- Python libraries (see [`requirements.txt`](./requirements.txt)):
+  - `requests`
+  - `lxml`
+  - `wordcloud`
+  - `matplotlib`
+  - `...`
+
+## Installation and Usage
+
+### 1. Clone this repository:
+
+```bash
+git clone https://github.com/sergarsilla/ai-open-science-text-analysis.git
+cd ai-open-science-text-analysis
+```
+
+### 2. Create the `papers/` directory and place the PDFs you want to analyze inside
+
+### 3. Create the `output/` directory
+
+### 4. Run the application with Docker Compose (recommended)
+
+This method allows running the entire system in a single step without manually installing dependencies.
+
+1. **Install Docker Compose:** If you haven't installed it yet, follow the official [Docker Compose](https://docs.docker.com/compose/install/) instructions.
+
+2. **Run the application:**
+
+   ```bash
+   docker compose up --build
+   ```
+
+   This will build the image, start Grobid, and automatically analyze the PDFs in the `papers/` folder.
+
+3. **Results:**
+
+   Once the execution is complete, results will be available in the `output/` directory:
+
+   - `wordcloud_abstracts.png`: Word cloud based on the article abstracts.
+   - `figures_per_article.png`: Bar chart showing the number of figures per article.
+   - `article_links.txt`: List of links extracted from each article.
+
+4. **Stop the application:**
+
+   To stop and clean up Docker Compose services, use:
+
+   ```bash
+   docker compose down
+   ```
+
+### 5. Alternative: Run manually without Docker Compose
+
+If you prefer not to use Docker Compose, you can manually run Grobid and the analysis.
+
+#### A. Install dependencies manually
+
+1. **Create a virtual environment (optional but recommended):**
+
+   ```bash
+   python3 -m venv env
+   source env/bin/activate  # On Windows: env\Scripts\activate
+   ```
+
+2. **Install dependencies:**
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+#### B. Start Grobid manually
+
+If you choose not to use Docker Compose, you can manually run Grobid with Docker:
+
+```bash
+docker run -t --rm -p 8070:8070 lfoppiano/grobid:0.7.2
+```
+
+#### C. Run the analysis manually
+
+```bash
+python scripts/analyze.py
+```
+
+The PDFs must be placed in the `papers/` folder before running the analysis.
+
+## Repository Structure
+
+```
+ai-open-science-text-analysis/
+├── papers/                  # PDFs to analyze
+├── output/                  # Generated outputs (word cloud, links, etc.)
+├── scripts/                 # Main script (analyze.py) and others
+├── requirements.txt         # Python dependencies
+├── Dockerfile               # (Optional) Containerizing your custom image
+├── README.md                # This documentation file
+├── rationale.md             # Document explaining result validation
+├── CITATION.cff             # How to cite this repository (optional)
+├── LICENSE                  # License file
+└── .gitignore               # Ignores venv, __pycache__, etc.
+```
+
+## License
+
+This project is distributed under the **Apache** license.  
+Check the [`LICENSE`](./LICENSE) file for more details.
+
+## How to Cite this Repository
+
+If you want to cite this work, check [`CITATION.cff`](./CITATION.cff).  
+GitHub will display a "Cite this repository" box when it detects a `CITATION.cff` file.
+
+## Contact
+
+- Author: **Sergio García Mansilla** (sergarsilla@gmail.com)
+- Universidad Politécnica de Madrid (UPM)
+- For any suggestions, issues, or questions, open an issue or pull request on GitHub.
+
+---
+
+# 📌 Sección en Español
+
 Este proyecto analiza artículos PDF de acceso abierto usando [Grobid](https://github.com/kermitt2/grobid) para extraer información y generar:
 - Una **nube de palabras** (keyword cloud) a partir de los *abstracts* de dichos PDFs.
 - Una **visualización** (gráfico de barras) con el **número de figuras** por artículo.
@@ -113,7 +244,7 @@ ai-open-science-text-analysis/
 
 ## Licencia
 
-Este proyecto se distribuye bajo la licencia **Apache** (o la que prefieras).
+Este proyecto se distribuye bajo la licencia **Apache**.
 Revisa el archivo [`LICENSE`](./LICENSE) para más detalles.
 
 ## Cómo citar este repositorio
@@ -129,4 +260,4 @@ GitHub mostrará un recuadro de “Cite this repository” cuando detecte un `CI
 
 ---
 **¡Gracias por usar este proyecto!**
-Si te resulta útil, no olvides dejar una estrella en GitHub o mencionarlo en tus trabajos.
+Si te resulta útil, no olvides dejar una estrella en GitHub y/o mencionarlo en tus trabajos.
