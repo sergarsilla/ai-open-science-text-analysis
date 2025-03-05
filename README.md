@@ -15,6 +15,7 @@ Este proyecto analiza artículos PDF de acceso abierto usando [Grobid](https://g
   - `lxml`
   - `wordcloud`
   - `matplotlib`
+  - `...`
 
 ## Instalación y uso
 
@@ -25,9 +26,11 @@ git clone https://github.com/sergarsilla/ai-open-science-text-analysis.git
 cd ai-open-science-text-analysis
 ```
 
-### 2. Colocar los artículos PDF que deseas analizar en el directorio `papers/`
+### 2. Crear el directorio `papers/` y colocar los artículos PDF que deseas analizar dentro
 
-### 3. Ejecutar la aplicación con Docker Compose (recomendado)
+### 3. Crear el directorio `output/`
+
+### 4. Ejecutar la aplicación con Docker Compose (recomendado)
 
 Este método permite ejecutar todo el sistema en un solo paso, sin necesidad de instalar dependencias manualmente.
 
@@ -45,9 +48,9 @@ Este método permite ejecutar todo el sistema en un solo paso, sin necesidad de 
 
    Una vez finalizada la ejecución, los resultados estarán en la carpeta `output/`:
 
-   - `wordcloud.png`: Nube de palabras basada en los resúmenes de los artículos.
+   - `wordcloud_abstracts.png`: Nube de palabras basada en los resúmenes de los artículos.
    - `figures_per_article.png`: Gráfico de barras con el número de figuras por artículo.
-   - `urls_per_article.txt`: Listado de enlaces extraídos de cada artículo.
+   - `article_links.txt`: Listado de enlaces extraídos de cada artículo.
 
 4. **Detener la aplicación:**
 
@@ -57,7 +60,7 @@ Este método permite ejecutar todo el sistema en un solo paso, sin necesidad de 
    docker compose down
    ```
 
-### 4. Alternativa: Ejecutar manualmente sin Docker Compose
+### 5. Alternativa: Ejecutar manualmente sin Docker Compose
 
 Si prefieres no usar Docker Compose, puedes ejecutar Grobid y el análisis manualmente.
 
@@ -96,7 +99,7 @@ Los PDFs deben colocarse en la carpeta `papers/` antes de ejecutar el análisis.
 
 ```
 ai-open-science-text-analysis/
-├── papers/                  # PDFs de ejemplo a analizar
+├── papers/                  # PDFs a analizar
 ├── output/                  # Salidas generadas (nube, enlaces, etc.)
 ├── scripts/                 # Script principal (analyze.py) y otros
 ├── requirements.txt         # Dependencias Python
@@ -104,7 +107,7 @@ ai-open-science-text-analysis/
 ├── README.md                # Este archivo de documentación
 ├── rationale.md             # Documento explicando la validación de resultados
 ├── CITATION.cff             # Cómo citar este repositorio (opcional)
-├── LICENSE                  # Licencia (MIT, Apache, etc.)
+├── LICENSE                  # Licencia
 └── .gitignore               # Ignora venv, __pycache__, etc.
 ```
 
